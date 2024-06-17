@@ -18,4 +18,10 @@ wd.get("https://www.wikipedia.org/")
 assert("Wikipedia" in wd.title)
 
 # Print the entire HTML
-print(wd.page_source)
+# print(wd.page_source)
+
+# Fetching the element by ID
+input_element = wd.find_element(by=By.ID, value="searchInput")
+
+# Sending keys
+input_element.send_keys("ADS")
