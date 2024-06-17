@@ -9,4 +9,13 @@ chrome_options.add_argument('--headless')
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-dev-shm-usage')
 
-wd = webdriver.Chrome(service=Service(ChromeDriverManager.install()), options= chrome_options)
+wd = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options= chrome_options)
+
+# Get the main page
+wd.get("https://www.wikipedia.org/")
+
+# Assertion statement
+assert("Wikipedia" in wd.title)
+
+# Print the entire HTML
+print(wd.page_source)
