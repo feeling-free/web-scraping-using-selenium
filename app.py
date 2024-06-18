@@ -61,4 +61,11 @@ assert "Adaptive software development - Wikipedia" in wd.title
 p_tags = wd.find_elements(by = By.TAG_NAME, value="p")
 
 # printing the array with <p> tag elements
-print("Number of tags found : ", len(p_tags))
+# print("Number of tags found : ", len(p_tags))
+
+# Extract text from all elements
+text_lines = ''
+for p_tag in p_tags:
+    text_lines = p_tag.text
+    
+print(text_lines)
