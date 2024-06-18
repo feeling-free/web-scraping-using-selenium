@@ -40,12 +40,12 @@ wd.switch_to.window(window_after)
 assert "ASD - Wikipedia" in wd.title
 
 # Printing the title
-print("Successfully loaded the page", wd.title)
+# print("Successfully loaded the page", wd.title)
 
 #fetch specific link through link text
-link_text = wd.find_element(By.LINK_TEXT, "Adaptive Software development")
+link_text = wd.find_element(By.LINK_TEXT, "Adaptive software development")
 # Clicking the link
-wd.execute_script("link_text.click();", link_text)
+wd.execute_script("arguments[0].click();", link_text)
 
 #Switching window
 window_after = wd.window_handles[0]
@@ -55,4 +55,10 @@ wd.switch_to.window(window_after)
 assert "Adaptive software development - Wikipedia" in wd.title
 
 # Printing the title
-print("Successfully loaded the page", wd.title)
+# print("Successfully loaded the page", wd.title)
+
+# Fetching all elements by Tag Name
+p_tags = wd.find_elements(by = By.TAG_NAME, value="p")
+
+# printing the array with <p> tag elements
+print("Number of tags found : ", len(p_tags))
