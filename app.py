@@ -3,6 +3,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+import re
 
 chrome_options = Options()
 chrome_options.add_argument('--headless')
@@ -66,6 +67,12 @@ p_tags = wd.find_elements(by = By.TAG_NAME, value="p")
 # Extract text from all elements
 text_lines = ''
 for p_tag in p_tags:
-    text_lines = p_tag.text
+    text_lines += p_tag.text
     
-print(text_lines)
+# print(text_lines)
+
+# Match all digits occurring in squared brackets in the string and replace them with empty string
+
+pattern = r'\[[0-9]\]'
+new_string = re.sub(pattern, '', text_lines)
+print(new_string)
