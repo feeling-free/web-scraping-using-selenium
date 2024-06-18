@@ -75,4 +75,14 @@ for p_tag in p_tags:
 
 pattern = r'\[[0-9]\]'
 new_string = re.sub(pattern, '', text_lines)
-print(new_string)
+# print(new_string)
+
+# Extract nested elements using CSS selector
+elems = wd.find_elements(by=By.CSS_SELECTOR, value='p > a')
+
+# Creating Dictionary
+link_dict = {}
+for elem in elems:
+    link_dict[elem.text] = elem.get_attribute('href')
+    
+print(link_dict)
