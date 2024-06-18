@@ -24,10 +24,20 @@ assert("Wikipedia" in wd.title)
 input_element = wd.find_element(by=By.ID, value="searchInput")
 
 # Sending keys
-input_element.send_keys("ADS")
+input_element.send_keys("ASD")
 
 # Fetch search button through Css Class Name
 search = wd.find_element(by=By.CLASS_NAME, value="pure-button")
 
 # Click the search button
 wd.execute_script("arguments[0].click();", search)
+
+# Switch windows
+window_after = wd.window_handles[0]
+wd.switch_to.window(window_after)
+
+# Assertion statement
+assert "ASD - Wikipedia" in wd.title
+
+# Printing the title
+print("Successfully loaded the page", wd.title)
