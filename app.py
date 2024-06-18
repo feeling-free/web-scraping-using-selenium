@@ -41,3 +41,18 @@ assert "ASD - Wikipedia" in wd.title
 
 # Printing the title
 print("Successfully loaded the page", wd.title)
+
+#fetch specific link through link text
+link_text = wd.find_element(By.LINK_TEXT, "Adaptive Software development")
+# Clicking the link
+wd.execute_script("link_text.click();", link_text)
+
+#Switching window
+window_after = wd.window_handles[0]
+wd.switch_to.window(window_after)
+
+# Assertion statement
+assert "Adaptive software development - Wikipedia" in wd.title
+
+# Printing the title
+print("Successfully loaded the page", wd.title)
